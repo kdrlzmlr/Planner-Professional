@@ -1,10 +1,13 @@
-﻿namespace Planner_Professional
+﻿using Planner_Professional.ViewModel;
+
+namespace Planner_Professional
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        public MainPage(MainViewModel vm)
         {
             InitializeComponent();
+            BindingContext = vm;
         }
     }
 }

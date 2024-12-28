@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Planner_Professional.ViewModel;
 
 namespace Planner_Professional
 {
@@ -16,8 +17,11 @@ namespace Planner_Professional
 
             builder.Services.AddMauiBlazorWebView();
 
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<MainViewModel>();
+
 #if DEBUG
-    		builder.Services.AddBlazorWebViewDeveloperTools();
+            builder.Services.AddBlazorWebViewDeveloperTools();
     		builder.Logging.AddDebug();
 #endif
 
