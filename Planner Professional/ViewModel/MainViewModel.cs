@@ -28,5 +28,12 @@ namespace Planner_Professional.ViewModel
             Items.Add(Text);    
             Text = string.Empty;
         }
+
+        [RelayCommand]
+        void Remove(string s)
+        {
+            if (Items.Contains(s))
+                Items.Remove(s);
+        }
     }
 }

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Planner_Professional"
              x:Class="Planner_Professional.MainPage"
-             BackgroundColor="{DynamicResource PageBackgroundColor}"
+             BackgroundColor="Black"
              xmlns:viewmodel="clr-namespace:Planner_Professional.ViewModel"
              x:DataType="viewmodel:MainViewModel">
 
@@ -15,22 +15,26 @@
 
     <Grid RowDefinitions="100, Auto, *" ColumnDefinitions=".75*, .25*" Padding="10" RowSpacing="10" ColumnSpacing="10">
         <Image Grid.ColumnSpan="2" Source="dotnet_bot.svg" BackgroundColor="Transparent" />
-        <Entry Placeholder="Enter task" Grid.Row="1" Text="{Binding Text}" />
+        <Entry Placeholder="Enter task" Grid.Row="1" Text="{Binding Text}" TextColor="White" />
 
-        <Button Text="Add" Grid.Row="1" Grid.Column="1" Command="{Binding AddCommand}" />
+        <Button Text="Add" Grid.Row="1" Grid.Column="1" Command="{Binding AddCommand}" BackgroundColor="Orange" TextColor="Black" />
 
-        <CollectionView Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Items}">
+        <CollectionView Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Items}" BackgroundColor="Black">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type x:String}">
                     <SwipeView>
                         <SwipeView.RightItems>
                             <SwipeItems>
-                                <SwipeItem Text="Delete" BackgroundColor="Red" />
+                                <SwipeItem 
+                                    Text="Delete" 
+                                    BackgroundColor="Red" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=RemoveCommand}"
+                                    CommandParameter="{Binding .}"/>
                             </SwipeItems>
                         </SwipeView.RightItems>
                         <Grid Padding="0,5">
-                            <Frame>
-                                <Label Text="{Binding .}" FontSize="24" TextColor="Black" />
+                            <Frame BackgroundColor="Gray" BorderColor="Orange">
+                                <Label Text="{Binding .}" FontSize="16" BackgroundColor="Gray" TextColor="White"/>
                             </Frame>
                         </Grid>
                     </SwipeView>
